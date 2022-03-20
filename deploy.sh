@@ -5,3 +5,6 @@ echo "Running npm install.."
 npm install
 echo "Running npm run build.."
 npm run build
+echo "Outputting npm and node version"
+node -v
+npm -v
