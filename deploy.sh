@@ -10,5 +10,5 @@ node -v
 npm -v
 
 echo "Copying from /home/site/repository to /home/site/wwwroot"
-cp /home/site/repository /home/site/wwwroot
+cp -r /home/site/repository /home/site/wwwroot
 
