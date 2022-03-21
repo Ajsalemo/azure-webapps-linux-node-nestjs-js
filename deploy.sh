@@ -80,7 +80,7 @@ fi
 if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
   cd "$DEPLOYMENT_TARGET"
   echo "Running custom bash build script.."
-  echo "Running yarn install.."
+  echo "Running yarn install and running yarn config delete proxy.."
   yarn config delete proxy
   yarn install 
   echo "Running yarn run build.." 
