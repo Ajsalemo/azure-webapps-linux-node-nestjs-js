@@ -82,9 +82,13 @@ if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
   echo "Running custom bash build script.."
   echo "Running npm install.."
   npm install
-  echo "Running npm yarn.." 
-  npm yarn
+  echo "Running npm run build.." 
+  npm run build
   echo "done.."
+  echo "Checking node version.."
+  node -v
+  echo "Checking NPM version.."
+  npm -v
   exitWithMessageOnError "npm failed"
   cd - > /dev/null
 fi
