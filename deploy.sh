@@ -80,15 +80,15 @@ fi
 if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
   cd "$DEPLOYMENT_TARGET"
   echo "Running custom bash build script.."
-  echo "Running npm install.."
-  npm install
-  echo "Running npm run build.." 
-  npm run build
+  echo "Running yarn install.."
+  yarn install
+  echo "Running yarn run build.." 
+  yarn run build
   echo "done.."
   echo "Checking node version.."
   node -v
-  echo "Checking NPM version.."
-  npm -v
+  echo "Checking yarn version.."
+  yarn -v
   exitWithMessageOnError "npm failed"
   cd - > /dev/null
 fi
