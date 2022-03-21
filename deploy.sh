@@ -81,7 +81,8 @@ if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
   cd "$DEPLOYMENT_TARGET"
   echo "Running custom bash build script.."
   echo "Running yarn install.."
-  yarn install --network-timeout=1000000
+  yarn config delete proxy
+  yarn install 
   echo "Running yarn run build.." 
   yarn run build
   echo "done.."
