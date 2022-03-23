@@ -98,7 +98,7 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 :: 3. Install npm packages
 IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   pushd "%DEPLOYMENT_TARGET%"
-  echo "Checking NPM version"
+  echo "Checking NPM version.."
   npm -v
   echo "Running npm install.."
   npm install
