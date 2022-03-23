@@ -98,8 +98,11 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 :: 3. Install npm packages
 IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   pushd "%DEPLOYMENT_TARGET%"
+  echo "Checking NPM version"
   npm -v
+  echo "Running npm install.."
   npm install
+  echo "Running npm run build.."
   npm run build
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
