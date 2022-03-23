@@ -98,9 +98,9 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 :: 3. Install npm packages
 IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   pushd "%DEPLOYMENT_TARGET%"
-  yarn -v
-  yarn install
-  yarn run build
+  npm -v
+  npm install
+  npm run build
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
