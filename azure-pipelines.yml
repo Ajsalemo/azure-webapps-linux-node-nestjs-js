@@ -77,7 +77,7 @@ stages:
             
           - script: |
               ls -lrta ./node_modules/.bin
-            displayName: 'Unzip zip'
+            displayName: 'Check for symlinks'
             
           - script: |
               zip -qr $(Pipeline.Workspace)/drop/$(Build.BuildId).zip ./*
