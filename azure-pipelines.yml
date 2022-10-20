@@ -72,11 +72,11 @@ stages:
           steps:
           
           - script: |
-              unzip $(Pipeline.Workspace)/drop/$(Build.BuildId).zip 
+              unzip $(Pipeline.Workspace)/drop/$(Build.BuildId).zip .
             displayName: 'Check for symlinks on files'
             
           - script: |
-              zip $(Pipeline.Workspace)/drop/$(Build.BuildId).zip 
+              zip -qr $(Pipeline.Workspace)/drop/$(Build.BuildId).zip ./*
             displayName: 'Zip the file'
 
           - task: AzureWebApp@1
