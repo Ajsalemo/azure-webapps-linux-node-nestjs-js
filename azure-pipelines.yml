@@ -72,7 +72,7 @@ stages:
           steps:
           
           - script: |
-              unzip $(Pipeline.Workspace)/drop/$(Build.BuildId).zip .
+              unzip $(Pipeline.Workspace)/drop/$(Build.BuildId).zip 
             displayName: 'Check for symlinks on files'
             
           - script: |
