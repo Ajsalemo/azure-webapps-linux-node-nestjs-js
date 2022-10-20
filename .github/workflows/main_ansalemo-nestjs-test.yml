@@ -30,7 +30,7 @@ jobs:
         run: ls -lrta ./node_modules/.bin
 
       - name: Tar all files for upload between jobs
-        run: zip --symlinks -r nest.zip ./*
+        run: zip -r nest.zip ./*
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
