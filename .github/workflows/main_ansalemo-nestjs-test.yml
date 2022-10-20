@@ -21,17 +21,22 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: npm install, build, and test
+      - name: npm install, build
         run: |
           npm install
           npm run build --if-present
-          npm run test --if-present
+
+      - name: Check for symlinks on files
+        run: ls -lrta ./node_modules/.bin
+
+      - name: Tar all files for upload between jobs
+        run: tar -cvzf nest.tar.gz ./* 
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: .
+          path: nest.tar.gz
 
   deploy:
     runs-on: ubuntu-latest
@@ -46,6 +51,15 @@ jobs:
         with:
           name: node-app
 
+      - name: Extract Tar file
+        run: tar -h -zxf nest.tar.gz 
+
+      - name: Check for symlinks on files
+        run: ls -lrta ./node_modules/.bin
+
+      - name: Zip all files for upload between jobs
+        run: zip -qr nest.zip ./* 
+
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -53,4 +67,7 @@ jobs:
           app-name: 'ansalemo-nestjs-test'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A56A24B1626E49B2B3234FDDD347BB9E }}
-          package: .
+          package: nest.zip
+
+      - name: Delete zip file
+        run: rm nest.zip
