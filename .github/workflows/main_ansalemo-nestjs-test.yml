@@ -55,7 +55,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'ansalemo-nestjs-test'
+          app-name: 'ansalemo-githubactions-zip'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A56A24B1626E49B2B3234FDDD347BB9E }}
           package: nest.zip
